@@ -1,23 +1,17 @@
-
-<div class="card">
-	<p>{{this.name}}</p>
-	<img src="{{this.image}}" alt="">
-    <a href="/albums/:artistId">View Albums</a>
-</div>
-
-{{!-- 
-	On this page, you should receive an Array with all of the artists, (line 68 in app.js)
-	Try doing a {{#each artists}} around the <div class="card"></div> !
-
-	Moreover, you'll notice that every single link lead to http://localhost:3000/albums/:artistId
-	but we're never putting the actual id of the artist !
-	Remember that the "/:someValue" notation is only when creating routes, not inside HTML.
-	I told you about some interesting keys line 56 in app.js
-	Based on that information, try putting {{this.id}} at the correct place.
-
-	Last thing, each artists haqs an "images" key which is an Array of object, those object
-	contain the height, width of a picture and a link to the picture under the "url" key.
-	So we could pick the first image in the images array and put it's url as the source for our <img/>
-	The syntax is bit weird so here it is, try putting it at the right place:
-	{{this.images.0.url}}
- --}}
+{{#each artistSearched}}
+<div class="card col-3" style="width: 18rem;">
+  {{!-- this.images is an Array of Object, inside each of those object you have
+        a "url" key.
+        To display the first image in the array you could use this syntax:
+        {{this.images.0.url}}
+   --}}
+  <img  src="{{this.images}}" class="card-img-top" alt="{{this.name}}">
+  <div class="card-body">
+    <h1 class="card-title">{{this.name}}</h1>
+  </div>
+  {{!-- Once the search is working and by exploring the data, you'll be able to 
+        find what is artistIdGoesHere supposed to be 😁
+   --}}
+  <a href="/albums/someArtistIdGoesHere">View Albums</a>
+</div>  
+{{/each}}

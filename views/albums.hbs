@@ -1,9 +1,10 @@
-<div class="card">
-	<p>{{name}}</p>
-	<img src="{{image}}" alt="">
-    <a href="/tracks/:albumId">View Tracks</a>
-</div>
-{{!-- 
-	Same remarks as in artist-search-result.hbs
-	Explore the data you send then do a {{#each}} on the Array you give to the view and try to display the data
- --}}
+{{#each artistSearched}}
+<div class="card col-3" style="width: 18rem;">
+  <img  src="{{this.images}}" class="card-img-top" alt="{{this.name}}">
+  <div class="card-body">
+    <h1 class="card-title">{{this.name}}</h1>
+    <button><a href="#">View Albums</a></button>
+  </div>
+
+</div>  
+{{/each}}
